@@ -1,0 +1,7 @@
+title User creating new note on page
+
+Browser->Server: Button clicked. User sends input to server
+note right of Server: submitting form causes five HTTP requests
+Server->Browser: Server responds with URL redirect (status code 302) and asks browser for new HTTP GET
+Browser->Server: Browser reloads notes page.
+note right of server: three more HTTP requests
