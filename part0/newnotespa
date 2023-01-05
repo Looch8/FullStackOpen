@@ -1,0 +1,7 @@
+>browser only sends one request to server once submit is clicked
+
+>POST request to new address contains new note as JSON data containing both content and timestamp
+
+>content-type header of request tells server that data is represented in JSON 
+
+>server responds with status code 201. Server stays on same page and does not ask for a re-direct
