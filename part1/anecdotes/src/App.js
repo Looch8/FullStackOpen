@@ -14,8 +14,10 @@ const App = () => {
 
   const [selected, setSelected] = useState(0);
 
-  const randomNumGenerator = Math.floor(Math.random() * anecdotes.length);
-  console.log(anecdotes[randomNumGenerator]);
+  const setNewAnecdote = () =>
+    setSelected(Math.floor(Math.random() * anecdotes.length));
+
+  console.log(setNewAnecdote);
 
   return <div>{anecdotes[selected]}</div>;
 };
