@@ -1,5 +1,9 @@
 import { useState } from "react";
 
+const Button = (props) => {
+  return <button>next anecdote</button>;
+};
+
 const App = () => {
   const anecdotes = [
     "If it hurts, do it more often.",
@@ -19,7 +23,12 @@ const App = () => {
 
   console.log(setNewAnecdote);
 
-  return <div>{anecdotes[selected]}</div>;
+  return (
+    <div>
+      <h2>{anecdotes[selected]} </h2>
+      <Button />
+    </div>
+  );
 };
 
 export default App;
