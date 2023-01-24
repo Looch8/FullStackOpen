@@ -28,10 +28,13 @@ const App = () => {
 
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       <h3>{anecdotes[selected]}</h3>
       <h3>has {points[selected]} votes </h3>
       <button onClick={handleClick}>next anecdote</button>
       <button onClick={vote}>vote</button>
+
+      <h1>Anecdote with most votes</h1>
     </div>
   );
 };
