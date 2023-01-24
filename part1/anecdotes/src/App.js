@@ -23,11 +23,13 @@ const App = () => {
     const copy = [...points];
     copy[selected] += 1;
     setPoints(copy);
+    console.log(copy);
   };
 
   return (
     <div>
       <h3>{anecdotes[selected]}</h3>
+      <h3>has {points[selected]} votes </h3>
       <button onClick={handleClick}>next anecdote</button>
       <button onClick={vote}>vote</button>
     </div>
