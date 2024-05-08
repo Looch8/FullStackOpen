@@ -2,7 +2,19 @@ const Header = ({ course }) => {
 	return <h1>{course}</h1>;
 };
 
-const Content = ({ part, exercise }) => {
+// Refactor the Content component so that it does not render any names of parts or their number of exercises by itself. Instead, it only renders three Part components of which each renders the name and number of exercises of one part.
+
+const Content = ({ part1, exercise1, part2, exercise2, part3, exercise3 }) => {
+	return (
+		<div>
+			<Part part1={part1} exercise1={exercise1} />
+			<Part part1={part2} exercise1={exercise2} />
+			<Part part1={part3} exercise1={exercise3} />
+		</div>
+	);
+};
+
+const Part = ({ part, exercise }) => {
 	return (
 		<p>
 			{part} {exercise}
@@ -26,9 +38,14 @@ const App = () => {
 	return (
 		<div>
 			<Header course={course} />
-			<Content part={part1} exercise={exercises1} />
-			<Content part={part2} exercise={exercises2} />
-			<Content part={part3} exercise={exercises3} />
+			<Content
+				part1={part1}
+				exercise1={exercises1}
+				part2={part2}
+				exercise2={exercises2}
+				part3={part3}
+				exercise3={exercises3}
+			/>
 			<Total total={exercises1 + exercises2 + exercises3} />
 		</div>
 	);
