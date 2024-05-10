@@ -27,9 +27,9 @@ const App = () => {
 	return (
 		<div>
 			<h2>give feedback</h2>
-			<button onClick={handleGoodClick}>good</button>
-			<button onClick={handleNeutralClick}>neutral</button>
-			<button onClick={handleBadClick}>bad</button>
+			<Button onClick={handleGoodClick} text="good" />
+			<Button onClick={handleNeutralClick} text="neutral" />
+			<Button onClick={handleBadClick} text="bad" />
 			<Statistics
 				good={good}
 				neutral={neutral}
@@ -44,6 +44,14 @@ const App = () => {
 };
 
 export default App;
+
+const Button = ({ text, onClick }) => {
+	return (
+		<>
+			<button onClick={onClick}>{text}</button>
+		</>
+	);
+};
 
 const Statistics = ({ good, neutral, bad, all, average, positive, clicks }) => {
 	if (clicks.length === 0) {
