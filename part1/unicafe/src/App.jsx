@@ -53,19 +53,31 @@ const Button = ({ text, onClick }) => {
 	);
 };
 
-const Statistics = ({ good, neutral, bad, all, average, positive, clicks }) => {
-	if (clicks.length === 0) {
+const Statistics = (props) => {
+	console.log(props);
+	if (props.clicks.length === 0) {
 		return <h3>No feedback given</h3>;
 	} else
 		return (
 			<div>
 				<h2>statistics</h2>
-				<p>good {good}</p>
-				<p>neutral {neutral}</p>
-				<p>bad {bad}</p>
-				<p>all {all}</p>
-				<p>average {average}</p>
-				<p>positive {positive ? positive : 0}</p>
+				<StatisticLine text="good" value={props.good} />
+				<StatisticLine text="neutral" value={props.neutral} />
+				<StatisticLine text="bad" value={props.bad} />
+				<StatisticLine text="all" value={props.all} />
+				<StatisticLine text="average" value={props.average} />
+				<StatisticLine
+					text="positive"
+					value={props.positive ? props.positive : 0}
+				/>
 			</div>
 		);
+};
+
+const StatisticLine = ({ text, value }) => {
+	return (
+		<p>
+			{text} {value}
+		</p>
+	);
 };
