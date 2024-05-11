@@ -12,9 +12,19 @@ const App = () => {
 		"The only way to go fast, is to go well.",
 	];
 
-	const [selected, setSelected] = useState(0);
+	const [selected, setSelected] = useState(anecdotes[0]);
 
-	return <div>{anecdotes[selected]}</div>;
+	const randomAnecdote = () => {
+		setSelected(anecdotes[Math.floor(Math.random() * anecdotes.length)]);
+		console.log(`selected: ${selected}`);
+	};
+
+	return (
+		<div>
+			{selected} <br></br>
+			<button onClick={randomAnecdote}>next anecdote</button>
+		</div>
+	);
 };
 
 export default App;
