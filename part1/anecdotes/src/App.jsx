@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Button = ({ setSelected, anecdotes }) => {
+const RandomButton = ({ setSelected, anecdotes }) => {
 	const randomAnecdote = () => {
 		setSelected(anecdotes[Math.floor(Math.random() * anecdotes.length)]);
 	};
@@ -25,7 +25,7 @@ const App = () => {
 	return (
 		<div>
 			{selected} <br></br>
-			<Button setSelected={setSelected} anecdotes={anecdotes} />
+			<RandomButton setSelected={setSelected} anecdotes={anecdotes} />
 		</div>
 	);
 };
