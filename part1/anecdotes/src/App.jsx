@@ -21,10 +21,20 @@ const App = () => {
 	];
 
 	const [selected, setSelected] = useState(anecdotes[0]);
+	const [points, setPoints] = useState(new Array(anecdotes.length).fill(0));
+
+	const updatePoint = () => {
+		const updatedPoints = [...points];
+		const selectedIndex = anecdotes.indexOf(selected);
+		updatedPoints[selectedIndex] += 1;
+		setPoints(updatedPoints);
+	};
 
 	return (
 		<div>
 			{selected} <br></br>
+			<p>has {points[anecdotes.indexOf(selected)]} votes</p>
+			<button onClick={updatePoint}>vote</button>
 			<RandomButton setSelected={setSelected} anecdotes={anecdotes} />
 		</div>
 	);
