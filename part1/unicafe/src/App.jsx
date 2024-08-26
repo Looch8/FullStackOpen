@@ -13,14 +13,16 @@ const Statistics = ({ good, bad, neutral, allClicks }) => {
 		return <h3>No feedback given</h3>;
 	}
 	return (
-		<div>
-			<StatisticsLine text={"good"} value={good} />
-			<StatisticsLine text={"neutral"} value={neutral} />
-			<StatisticsLine text={"bad"} value={bad} />
-			<StatisticsLine text={"all"} value={good + neutral + bad} />
-			<StatisticsLine text={"average"} value={average()} />
-			<StatisticsLine text={"positive"} value={positive()} />
-		</div>
+		<table>
+			<tbody>
+				<StatisticsLine text={"good"} value={good} />
+				<StatisticsLine text={"neutral"} value={neutral} />
+				<StatisticsLine text={"bad"} value={bad} />
+				<StatisticsLine text={"all"} value={good + neutral + bad} />
+				<StatisticsLine text={"average"} value={average()} />
+				<StatisticsLine text={"positive"} value={positive()} />
+			</tbody>
+		</table>
 	);
 };
 
@@ -59,15 +61,10 @@ const Button = ({
 
 const StatisticsLine = ({ text, value }) => {
 	return (
-		<table>
-			<tbody>
-				<tr>
-					<td>
-						{text} {value}
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<tr>
+			<td>{text}</td>
+			<td>{value}</td>
+		</tr>
 	);
 };
 
