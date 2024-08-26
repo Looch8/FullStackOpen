@@ -1,11 +1,22 @@
 import { useState } from "react";
 
-const Button = ({ anecdotes, setSelected }) => {
+const NextButton = ({ anecdotes, setSelected }) => {
 	const handleClick = () => {
 		setSelected(Math.floor(Math.random() * anecdotes.length));
 	};
 
 	return <button onClick={handleClick}>next anecdote</button>;
+};
+
+const VoteButton = ({ votes, selected, setVotes }) => {
+	// Copy votes array and update score
+	const handleVoteClick = () => {
+		const points = [...votes];
+		points[selected] += 1;
+		setVotes(points);
+	};
+
+	return <button onClick={handleVoteClick}>vote</button>;
 };
 
 const App = () => {
@@ -21,12 +32,15 @@ const App = () => {
 	];
 
 	const [selected, setSelected] = useState(0);
+	// 0 filled array of anecdotes length
+	const [votes, setVotes] = useState(Array(anecdotes.length).fill(0));
 
 	return (
 		<div>
-			{anecdotes[selected]}
-			<br />
-			<Button anecdotes={anecdotes} setSelected={setSelected} />
+			<p>{anecdotes[selected]}</p>
+			<p>has {votes[selected]} votes</p>
+			<VoteButton votes={votes} selected={selected} setVotes={setVotes} />
+			<NextButton anecdotes={anecdotes} setSelected={setSelected} />
 		</div>
 	);
 };
