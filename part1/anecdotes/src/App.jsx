@@ -8,12 +8,13 @@ const NextButton = ({ anecdotes, setSelected }) => {
 	return <button onClick={handleClick}>next anecdote</button>;
 };
 
-const VoteButton = ({ votes, selected, setVotes }) => {
+const VoteButton = ({ votes, selected, setVotes, mostVotes }) => {
 	// Copy votes array and update score
 	const handleVoteClick = () => {
 		const points = [...votes];
 		points[selected] += 1;
 		setVotes(points);
+		mostVotes();
 	};
 
 	return <button onClick={handleVoteClick}>vote</button>;
@@ -32,32 +33,40 @@ const App = () => {
 	];
 
 	const [selected, setSelected] = useState(0);
-	// 0 filled array of anecdotes length
 	const [votes, setVotes] = useState(Array(anecdotes.length).fill(0));
-	console.log(votes);
+	const [winner, setWinner] = useState("");
+	const [highestVote, setHighestVote] = useState(0);
 
 	const mostVotes = () => {
-		let currentNum = 0;
-		let displayAnecdote = "";
-
+		let highestVote = -1;
+		let currentWinner = 0;
 		for (let i = 0; i < anecdotes.length; i++) {
-			if (votes[i] > votes[currentNum]) {
-				currentNum = i;
-				displayAnecdote = anecdotes[i];
+			if (votes[i] > highestVote) {
+				highestVote = votes[i];
+				currentWinner = i;
 			}
 		}
-		console.log(displayAnecdote);
+		setWinner(anecdotes[currentWinner]);
+		setHighestVote(highestVote);
 	};
-	mostVotes();
 
 	return (
 		<div>
 			<h2>Anecdote of the day</h2>
 			<p>{anecdotes[selected]}</p>
 			<p>has {votes[selected]} votes</p>
-			<VoteButton votes={votes} selected={selected} setVotes={setVotes} />
+			<VoteButton
+				votes={votes}
+				selected={selected}
+				setVotes={setVotes}
+				mostVotes={mostVotes}
+			/>
 			<NextButton anecdotes={anecdotes} setSelected={setSelected} />
 			<h2>Anecdote with most votes</h2>
+			<p>
+				{winner} <br />
+				has {highestVote} votes
+			</p>
 		</div>
 	);
 };
