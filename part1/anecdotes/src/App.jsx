@@ -34,13 +34,30 @@ const App = () => {
 	const [selected, setSelected] = useState(0);
 	// 0 filled array of anecdotes length
 	const [votes, setVotes] = useState(Array(anecdotes.length).fill(0));
+	console.log(votes);
+
+	const mostVotes = () => {
+		let currentNum = 0;
+		let displayAnecdote = "";
+
+		for (let i = 0; i < anecdotes.length; i++) {
+			if (votes[i] > votes[currentNum]) {
+				currentNum = i;
+				displayAnecdote = anecdotes[i];
+			}
+		}
+		console.log(displayAnecdote);
+	};
+	mostVotes();
 
 	return (
 		<div>
+			<h2>Anecdote of the day</h2>
 			<p>{anecdotes[selected]}</p>
 			<p>has {votes[selected]} votes</p>
 			<VoteButton votes={votes} selected={selected} setVotes={setVotes} />
 			<NextButton anecdotes={anecdotes} setSelected={setSelected} />
+			<h2>Anecdote with most votes</h2>
 		</div>
 	);
 };
