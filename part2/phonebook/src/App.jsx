@@ -9,9 +9,21 @@ const App = () => {
 		const nameObject = {
 			name: newName,
 		};
-
+		// Check if duplicate is present, if so. prevent adding name to list.
+		if (preventDuplicateAdd(nameObject)) {
+			return;
+		}
 		setPersons(persons.concat(nameObject));
 		setNewName("");
+	};
+
+	const preventDuplicateAdd = (nameObject) => {
+		for (let i = 0; i < persons.length; i++) {
+			if (Object.values(persons[i]).includes(nameObject.name)) {
+				alert(`${nameObject.name} is already added to the phonebook`);
+				return true;
+			}
+		}
 	};
 
 	const handleNameChange = (event) => {
