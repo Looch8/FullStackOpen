@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const PersonForm = ({
 	newName,
 	newNumber,
@@ -16,9 +18,14 @@ const PersonForm = ({
 		if (preventDuplicateAdd(nameObject)) {
 			return;
 		}
-		setPersons(persons.concat(nameObject));
+		
+		// Add numbers to backend
+		axios.post('http://localhost:3001/persons', nameObject).then(response => {	
+		setPersons(persons.concat(response.data));
 		setNewName("");
 		setNewNumber("");
+			
+		})
 	};
 
 	const preventDuplicateAdd = (nameObject) => {
