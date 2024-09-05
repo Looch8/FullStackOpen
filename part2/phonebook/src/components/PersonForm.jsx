@@ -11,6 +11,7 @@ const PersonForm = ({
 }) => {
 	const addName = (event) => {
 		event.preventDefault();
+
 		const nameObject = {
 			name: newName + " ",
 			number: newNumber,

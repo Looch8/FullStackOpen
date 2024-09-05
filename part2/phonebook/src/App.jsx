@@ -18,7 +18,7 @@ const App = () => {
 	const [newName, setNewName] = useState("");
 	const [newNumber, setNewNumber] = useState("");
 	const [newFilter, setNewFilter] = useState("");
-	const [successMessage, setSuccessMessage] = useState("");
+	const [successMessage, setSuccessMessage] = useState(null);
 
 	// Fetch data from db.json
 	useEffect(() => {
@@ -43,10 +43,7 @@ const App = () => {
 	return (
 		<div>
 			<h2>Phonebook</h2>
-			<Notification
-				message={successMessage}
-				setSuccessMessage={setSuccessMessage}
-			/>
+			<Notification message={successMessage} />
 			<Filter newFilter={newFilter} setNewFilter={setNewFilter} />
 			<h2>add a new</h2>
 			<PersonForm
@@ -56,6 +53,7 @@ const App = () => {
 				setNewNumber={setNewNumber}
 				setPersons={setPersons}
 				persons={persons}
+				setSuccessMessage={setSuccessMessage}
 			/>
 			<h2>Numbers</h2>
 			<Persons
