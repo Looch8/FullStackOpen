@@ -26,7 +26,9 @@ const PersonForm = ({
 			setPersons(persons.concat(response.data));
 			setNewName("");
 			setNewNumber("");
-			setSuccessMessage(`message successful`);
+
+			// Success message for 5 seconds when user added succesfully.
+			setSuccessMessage(`${nameObject.name} successfully added`);
 			setTimeout(() => {
 				setSuccessMessage(null);
 			}, 5000);
