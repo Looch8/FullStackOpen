@@ -3,12 +3,12 @@
     {
       "id": "1",
       "content": "HTML is easy",
-      "important": true
+      "important": false
     },
     {
       "id": "2",
       "content": "Browser can execute only JavaScript",
-      "important": false
+      "important": true
     },
     {
       "id": "3",
@@ -31,13 +31,43 @@
       "important": true
     },
     {
-      "id": 7,
+      "id": "7",
       "content": "a new note...czdc",
       "important": false
     },
     {
-      "id": 8,
+      "id": "8",
       "content": "a new note...czdc",
+      "important": false
+    },
+    {
+      "id": 9,
+      "content": "a new note...",
+      "important": false
+    },
+    {
+      "id": 10,
+      "content": "a new note...",
+      "important": true
+    },
+    {
+      "id": 11,
+      "content": "a new note...",
+      "important": false
+    },
+    {
+      "id": 12,
+      "content": "a new note...",
+      "important": false
+    },
+    {
+      "id": 13,
+      "content": "a new note...",
+      "important": false
+    },
+    {
+      "id": 14,
+      "content": "a new note...",
       "important": false
     }
   ]
