@@ -1,4 +1,4 @@
-import axios from "axios";
+import nameService from "../services/names";
 
 const PersonForm = ({
 	newName,
@@ -18,14 +18,13 @@ const PersonForm = ({
 		if (preventDuplicateAdd(nameObject)) {
 			return;
 		}
-		
-		// Add numbers to backend
-		axios.post('http://localhost:3001/persons', nameObject).then(response => {	
-		setPersons(persons.concat(response.data));
-		setNewName("");
-		setNewNumber("");
-			
-		})
+
+		//  Send data to backend
+		nameService.create(nameObject).then((response) => {
+			setPersons(persons.concat(response.data));
+			setNewName("");
+			setNewNumber("");
+		});
 	};
 
 	const preventDuplicateAdd = (nameObject) => {
